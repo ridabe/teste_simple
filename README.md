@@ -28,8 +28,10 @@ O sistema esta fechado para leitura apenas de PDF e TXT.
 **Back-end:** 
 - Python
 
-**Bibliotecas:** 
+**Framework:** 
 - FastApi
+
+**Bibliotecas:**
 - requests
 - os
 - PyPDF2
@@ -136,6 +138,7 @@ Melhorias propostas para a segunda versão:
 - Tratamento de erros(try)
 - Testes Unitários
 - criação do gitignore para nao enviar o .env
+- Ajustes de Typo
 
 
 ## Suporte

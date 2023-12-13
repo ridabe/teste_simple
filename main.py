@@ -23,12 +23,11 @@ def get_item(codigo: int):
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
-        # Utiliza BeautifulSoup para analisar o conteúdo da página
+        # Utilize BeautifulSoup para analisar o conteúdo da página
         soup = BeautifulSoup(response.content, 'html.parser')
 
         # Encontra o token CSRF
         token_csrf = None
-
         # Procura o token CSRF em um input com name='csrf'
         input_csrf = soup.find('input', {'name': 'csrf'})
         if input_csrf:
@@ -39,7 +38,7 @@ def get_item(codigo: int):
             # Definição do payload com o código de acesso e o token CSRF
             payload = {
                 'codigo': codigo,
-                'csrf': token_csrf  # Adicione o token CSRF ao payload
+                'csrf': token_csrf
             }
 
             # Definição dos novos cabeçalhos
@@ -59,7 +58,7 @@ def get_item(codigo: int):
                 # Por exemplo, encontrar todos os links na página
                 links = soup_post.find_all('a')
             else:
-                return f'Falha na requisição POST. {response_post.status_code}'
+                return f'Falha na requisição POST.'
 
             if not os.path.exists(save_dir):
                 os.makedirs(save_dir)
@@ -73,6 +72,13 @@ def get_item(codigo: int):
 
                     if file_response.status_code == 200:
                         # Extrai o nome do arquivo do link
+                        '''
+                                Melhorias propostas neste trecho:
+                            Em um code review eu iria remover o metodo split e utlilizar a 
+                            variável "codigo" que vem no endpoint para formar o nome da subpasta
+                                obtendo esse resultado:
+                                new_dir = save_dir + "/" + codigo                            
+                        '''
                         get_name = href.split('/')[-1]
                         get_code = get_name.split('-')
                         get_code = get_code[1].split('.')
@@ -83,7 +89,6 @@ def get_item(codigo: int):
                         # Salva o conteúdo do arquivo
                         with open(filename, 'wb') as file:
                             file.write(file_response.content)
-                        # print(f'Arquivo {filename} baixado com sucesso.')
 
                         response = read_item(new_dir)
 
@@ -98,7 +103,7 @@ def get_item(codigo: int):
     return response
 
 
-def read_item(save_dir):
+def read_item(save_dir: str):
     conteudo_pdf = []
     conteudo_txt = []
     # Percorre os arquivos baixados no diretório
