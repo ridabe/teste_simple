@@ -8,8 +8,6 @@ O desafio é desenvolver um programa em Python capaz de acessar e extrair inform
 Importante ressaltar que o uso do Selenium* ou bibliotecas similares** não é permitido.
 
 
-
-
 ## Etiquetas
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
@@ -17,20 +15,48 @@ Importante ressaltar que o uso do Selenium* ou bibliotecas similares** não é p
 [![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
 
+## Resumo do sistema
+
+Através desta Api, o sistema envia uma requisição para a url proposta no teste, recupera os links dentro do sistema, baixa os arquivos para a maquina local criando a pasta determinada no arquivo .env, complementando com subpastas
+renomeadas com o codigo enviado. 
+
+Salva os aqurivos neste diretório e em seguida executa a leitura do mesmo, trazendo as linhas contidas dentro de cada arquivo.
+O sistema esta fechado para leitura apenas de PDF e TXT.
+
 ## Stack utilizada
 
-**Back-end:** Python
+**Back-end:** 
+- Python
 
-**Bibliotecas:** FastApi, requests, os, PyPDF2, BeautifulSoup, dotenv
+**Bibliotecas:** 
+- FastApi
+- requests
+- os
+- PyPDF2
+- BeautifulSoup
+- dotenv
 
 
 ## Documentação da API
 
-#### Retorna todos os itens
+#### EndPoint de chamada
 
 ```http
-  GET /api_url/files/{codigo}```
-
+  GET /api_url/files/{codigo}
+  ```
+#### Retorna da Api
+```json
+  {
+    "pdf": [
+        "e793ff53f0ca92f6205bc871546a2c79e54c4e0cd42c6a191e45e771d7217aca",
+        "f60dacd4b776b6ab10d343a7129a0daf6a9ba23827854c99d9fdc3e1a1b846db"
+    ],
+    "txt": [
+        "f60dacd4b776b6ab10d343a7129a0daf6a9ba23827854c99d9fdc3e1a1b846db.txt",
+        "e793ff53f0ca92f6205bc871546a2c79e54c4e0cd42c6a191e45e771d7217aca.txt"
+    ]
+  }
+  ```
 
 
 ## Variáveis de Ambiente
@@ -78,7 +104,11 @@ Utilize o postman ou outro app para acessar as rotas da api, acesse o endereço 
 ## Melhorias Sugeridas
 
 Melhorias propostas para a segunda versão:
-Refatorações, melhorias de performance, tratamento de erros(try), Testes Unitários.
+
+- Refatorações
+- Melhorias de performance
+- Tratamento de erros(try)
+- Testes Unitários
 
 
 ## Suporte
@@ -91,4 +121,6 @@ Para suporte, mande um email para ridabe@uol.com.br ou entre em nosso whatsapp (
 Esse projeto é parte do processo seletivo da:
 
 - Simple Energy
+
+![Logo](https://simpleenergy.com.br/wp-content/uploads/2021/04/logo-1.png)
 
