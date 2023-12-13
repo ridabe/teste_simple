@@ -135,6 +135,7 @@ Melhorias propostas para a segunda versão:
 - Melhorias de performance
 - Tratamento de erros(try)
 - Testes Unitários
+- criação do gitignore para nao enviar o .env
 
 
 ## Suporte
