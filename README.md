@@ -44,7 +44,7 @@ O sistema esta fechado para leitura apenas de PDF e TXT.
 ```http
   GET /api_url/files/{codigo}
   ```
-#### Retorna da Api
+#### Retorno da Api
 ```json
   {
     "pdf": [
@@ -68,7 +68,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 `SAVE_DIR`
 
 
-## Rodando localmente
+## Rodando via container
 
 Clone o projeto
 
@@ -92,6 +92,32 @@ Para executar um contêiner com a imagem criada:
 
 ```bash
   docker run -p 8000:8000 minha-api
+```
+
+Utilize o postman ou outro app para acessar as rotas da api, acesse o endereço iniciado pelo servidor:
+
+```bash
+  http://127.0.0.1:8000/files/321465
+```
+
+## Rodando localmente
+
+Clone o projeto
+
+```bash
+  git clone https://github.com/ridabe/teste_simple
+```
+
+Entre no diretório do projeto
+
+```bash
+  cd my-project
+```
+
+Inicie o servidor com o comando
+
+```bash
+  uvicorn main:app --reload
 ```
 
 Utilize o postman ou outro app para acessar as rotas da api, acesse o endereço iniciado pelo servidor:
